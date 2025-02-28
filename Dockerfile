@@ -9,12 +9,6 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# 声明构建参数
-ARG NEXT_PUBLIC_SITE_NAME
-
-# 设置为环境变量，使应用能够访问
-ENV NEXT_PUBLIC_SITE_NAME=${NEXT_PUBLIC_SITE_NAME}
-
 ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN corepack enable && corepack prepare pnpm@9.0.0 --activate && pnpm build
