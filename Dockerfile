@@ -11,7 +11,7 @@ COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN corepack enable && corepack prepare pnpm@8.15.4 --activate && pnpm build
+RUN corepack enable && corepack prepare pnpm@9.0.0 --activate && pnpm build
 
 FROM node:20-alpine AS runner
 WORKDIR /app
