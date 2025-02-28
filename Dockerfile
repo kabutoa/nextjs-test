@@ -9,6 +9,10 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# 添加构建参数
+ARG NEXT_PUBLIC_SITE_NAME
+ENV NEXT_PUBLIC_SITE_NAME=$NEXT_PUBLIC_SITE_NAME
+
 ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN corepack enable && corepack prepare pnpm@9.0.0 --activate && pnpm build
@@ -18,6 +22,8 @@ WORKDIR /app
 
 ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
+# 运行时也需要设置环境变量
+ENV NEXT_PUBLIC_SITE_NAME=$NEXT_PUBLIC_SITE_NAME
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
