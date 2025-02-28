@@ -2,7 +2,7 @@ FROM node:20-alpine AS deps
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml* ./
-RUN corepack enable && corepack prepare pnpm@8.15.4 --activate && pnpm i --frozen-lockfile
+RUN corepack enable && corepack prepare pnpm@9.0.0 --activate && pnpm i --frozen-lockfile
 
 FROM node:20-alpine AS builder
 WORKDIR /app
