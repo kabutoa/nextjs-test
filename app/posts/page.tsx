@@ -16,6 +16,9 @@ export default async function Page() {
             <span className="text-sm text-gray-600 ml-2">
               by {post.author?.name}
             </span>
+            <span className="text-sm text-gray-600 ml-2">
+              {post.createdAt.toLocaleString()}
+            </span>
           </li>
         ))}
       </ul>
