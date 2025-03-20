@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "dev:turbo": "next dev --turbopack",
+    "prebuild": "prisma generate",
     "build": "next build",
-    "postinstall": "prisma generate",
     "start": "next start --port 4000",
     "lint": "next lint"
   },
@@ -37,6 +37,6 @@
   },
   "engines": {
     "node": ">=20"
-  }
-
+  },
+  "engineStrict": true
 }
